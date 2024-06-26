@@ -1,7 +1,7 @@
 <?php 
 
 
-class controllerProdutos{
+class controllerPacientes{
     public function listarPacientes(){
         try{
             $modelPacientes = new modelPacientes();
