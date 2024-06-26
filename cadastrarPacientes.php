@@ -17,8 +17,9 @@ $cidade = $data["cidade"];
 $uf = $data["uf"];
 
 $controllerPacientes = new controllerPacientes();
-$resultado = $controllerPacientes->cadastrarPaciente()
+$resultado = $controllerPacientes->cadastrarPaciente($nome_paciente, $sobrenome_paciente,$email,$cep,$logradouro,$numero,$bairro,$cidade,$uf);
 
+if($resultado) echo "Paciente cadastrado com sucesso";
 
 
 

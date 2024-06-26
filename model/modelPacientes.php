@@ -18,8 +18,8 @@ class modelPacientes{
     public function cadastrarPaciente($nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf){
         try{
             $pdo = Database::conexao();
-            $cadastrar = $pdo->prepare("INSERT INTO tbl_pacientes($nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf) VALUES(
-                                       :nome, :sobrenome, :email, :cep, :logradouro, :numero, :bairro, :cidade, uf ) ");
+            $cadastrar = $pdo->prepare("INSERT INTO tbl_pacientes(nome, sobrenome, email, cep, logradouro, numero, bairro, cidade, uf) VALUES(
+                                       :nome, :sobrenome, :email, :cep, :logradouro, :numero, :bairro, :cidade, :uf ) ");
 
             $cadastrar->bindParam(':nome', $nome_paciente);
             $cadastrar->bindParam(':sobrenome', $sobrenome_paciente);
@@ -34,6 +34,7 @@ class modelPacientes{
 
             return true;
         } catch (PDOException $e){
+            ECHO $e;
             return false;
         }
     }
@@ -41,7 +42,7 @@ class modelPacientes{
     public function atualizarPaciente($nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf){
         try{
             $pdo = Database::conexao();
-            $atualizar = $pdo->prepare("UPDATE tbl_pacientes SET nome_paciente = :nome, sobrenome_paciente = :sobrenome, email = :email, cep = :cep, logradouro = :logradouro, 
+            $atualizar = $pdo->prepare("UPDATE tbl_pacientes SET nome = :nome, sobrenome = :sobrenome, email = :email, cep = :cep, logradouro = :logradouro, 
                                        numero = :numero, bairro = :bairro, cidade = :cidade, uf = :uf WHERE id_paciente = :id_paciente");
 
             $atualizar->bindParam(":nome", $nome_paciente);
