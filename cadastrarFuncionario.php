@@ -15,6 +15,4 @@ $resultado = $controllerFuncionarios->cadastrarFuncionarios($nome_funcionario,$s
 if($resultado) echo "Funcionario cadastrado com sucesso";
 
 
-
-
 ?>

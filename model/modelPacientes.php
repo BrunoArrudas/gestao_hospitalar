@@ -33,8 +33,7 @@ class modelPacientes{
             $cadastrar->execute();
 
             return true;
-        } catch (PDOException $e){
-            ECHO $e;
+        } catch (PDOException $e){    
             return false;
         }
     }
@@ -61,7 +60,6 @@ class modelPacientes{
             return false;
         }
     }
-
-
-
 }
+
+?>
