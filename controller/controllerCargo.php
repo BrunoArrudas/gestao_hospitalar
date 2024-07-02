@@ -20,10 +20,10 @@ class controllerCargo{
         }
     }
 
-    public function atualizarCargo($cargo){
+    public function atualizarCargo($id_cargo, $cargo){
         try{
             $modelCargo = new modelCargo();
-            return $modelCargo->atualizarCargo($cargo);
+            return $modelCargo->atualizarCargo($id_cargo, $cargo);
         }catch(PDOException $e){
             return false;
         }

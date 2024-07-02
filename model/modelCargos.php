@@ -29,11 +29,12 @@ class modelCargo{
         }
     }
 
-    public function atualizarCargo($cargo){
+    public function atualizarCargo($id_cargo, $cargo){
         try{
             $pdo = Database::conexao();
             $atualizar = $pdo->prepare("UPDATE tbl_cargos SET descricao_cargo = :descricao_cargo WHERE id_cargo = :id_cargo");
-
+            
+            $atualizar->bindParam(":id_cargo", $id_cargo);
             $atualizar->bindParam(":descricao_cargo", $cargo);
             $atualizar->execute();
 
