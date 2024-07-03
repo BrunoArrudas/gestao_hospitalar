@@ -15,12 +15,15 @@ class modelPacientes{
     }
 
     
-    public function cadastrarPaciente($nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf){
+    public function cadastrarPaciente($id_paciente, $id_prontuario, $id_status, $nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf){
         try{
             $pdo = Database::conexao();
-            $cadastrar = $pdo->prepare("INSERT INTO tbl_pacientes(nome, sobrenome, email, cep, logradouro, numero, bairro, cidade, uf) VALUES(
+            $cadastrar = $pdo->prepare("INSERT INTO tbl_pacientes(id_prontuario, id_paciente, id_status, nome, sobrenome, email, cep, logradouro, numero, bairro, cidade, uf) VALUES(
                                        :nome, :sobrenome, :email, :cep, :logradouro, :numero, :bairro, :cidade, :uf ) ");
 
+            $cadastrar->bindParam(':id_prontuario', $id_prontuario);
+            $cadastrar->bindParam(':id_paciente', $id_paciente);
+            $cadastrar->bindParam(':id_status', $id_status);
             $cadastrar->bindParam(':nome', $nome_paciente);
             $cadastrar->bindParam(':sobrenome', $sobrenome_paciente);
             $cadastrar->bindParam(':email', $email);

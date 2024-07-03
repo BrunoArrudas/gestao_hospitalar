@@ -12,10 +12,10 @@ class controllerPacientes{
 
     }
 
-    public function cadastrarPaciente($nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf){
+    public function cadastrarPaciente($id_paciente, $id_prontuario, $id_status, $nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf){
         try{
             $modelPacientes = new modelPacientes();
-            return $modelPacientes->cadastrarPaciente($nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf);
+            return $modelPacientes->cadastrarPaciente($id_paciente,$id_prontuario,$id_status,$nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf);
         }catch(PDOException $e) {
             return false;
         }

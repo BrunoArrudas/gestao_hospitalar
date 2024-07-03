@@ -6,6 +6,9 @@ include_once("model/modelPacientes.php");
 
 $data = json_decode(file_get_contents('php://input'),true);
 
+$id_paciente = $data["id_paciente"];
+$id_prontuario = $data["id_prontuario"];
+$id_status = $data["id_status"];
 $nome_paciente = $data["nome"];
 $sobrenome_paciente = $data["sobrenome"];
 $email = $data["email"];
@@ -17,7 +20,7 @@ $cidade = $data["cidade"];
 $uf = $data["uf"];
 
 $controllerPacientes = new controllerPacientes();
-$resultado = $controllerPacientes->cadastrarPaciente($nome_paciente, $sobrenome_paciente,$email,$cep,$logradouro,$numero,$bairro,$cidade,$uf);
+$resultado = $controllerPacientes->cadastrarPaciente($id_paciente, $id_prontuario, $id_status, $nome_paciente, $sobrenome_paciente,$email,$cep,$logradouro,$numero,$bairro,$cidade,$uf);
 
 if($resultado) echo "Paciente cadastrado com sucesso";
 
