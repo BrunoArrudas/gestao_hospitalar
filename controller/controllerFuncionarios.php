@@ -11,19 +11,19 @@ class controllerFuncionarios{
         }
     }
 
-    public function cadastrarFuncionarios($nome_funcionario, $sobrenome_funcionario){
+    public function cadastrarFuncionarios($id_funcionario,$id_cargo, $id_status, $nome_funcionario, $sobrenome_funcionario){
         try{
             $modelFuncionarios = new modelFuncionarios();
-            return $modelFuncionarios->cadastrarFuncionarios($nome_funcionario, $sobrenome_funcionario);
+            return $modelFuncionarios->cadastrarFuncionarios($id_funcionario, $id_cargo, $id_status, $nome_funcionario, $sobrenome_funcionario);
         }catch(PDOException $e){
             return false;
         }
     }
 
-    public function atualizarFuncionarios($nome_funcionario, $sobrenome_funcionario){
+    public function atualizarFuncionarios($id_funcionario, $nome_funcionario, $sobrenome_funcionario){
         try{
             $modelFuncionarios = new modelFuncionarios();
-            return $modelFuncionarios->atualizarFuncionarios($nome_funcionario, $sobrenome_funcionario);
+            return $modelFuncionarios->atualizarFuncionarios($id_funcionario, $nome_funcionario, $sobrenome_funcionario);
         }catch(PDOException $e){
             return false;
         }

@@ -10,7 +10,7 @@ $nome_funcionario = $data["nome"];
 $sobrenome_funcionario = $data["sobrenome"];
 
 $controllerFuncionarios = new controllerFuncionarios();
-$resultado = $controllerFuncionarios->cadastrarFuncionarios($nome_funcionario,$sobrenome_funcionario);
+$resultado = $controllerFuncionarios->cadastrarFuncionarios($id_funcionario, $id_cargo, $id_status, $nome_funcionario,$sobrenome_funcionario);
 
 if($resultado) echo "Funcionario cadastrado com sucesso";
 

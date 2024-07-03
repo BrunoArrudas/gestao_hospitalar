@@ -21,10 +21,10 @@ class controllerPacientes{
         }
     }
 
-    public function atualizarPaciente($nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf){
+    public function atualizarPaciente($id_paciente, $nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf){
         try{
             $modelPacientes = new modelPacientes();
-            return $modelPacientes->atualizarPaciente($nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf);
+            return $modelPacientes->atualizarPaciente($id_paciente, $nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf);
         } catch(PDOException $e){
             return false;
         }

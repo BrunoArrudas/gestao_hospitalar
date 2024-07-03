@@ -9,7 +9,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 $descricao_status = $data["descricao"];
 
 $controllerStatus = new controllerStatus();
-$resultado = $controllerStatus->cadastrarStatus($descricao_status);
+$resultado = $controllerStatus->cadastrarStatus($id_status,$descricao_status);
 
 if($resultado) echo "Status cadastrado com sucesso";
 

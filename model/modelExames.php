@@ -15,11 +15,15 @@ class modelExames{
         }
     }
 
-    public function cadastrarExames($exames){
+    public function cadastrarExames($id_exame, $id_funcionario, $id_prontuario, $id_procedimentos, $exames){
         try{
             $pdo = Database::conexao();
-            $cadastrar = $pdo->query("INSERT INTO tbl_exames (data_solicitacao) VALUES :data_solicitacao");
+            $cadastrar = $pdo->query("INSERT INTO tbl_exames (id_exame, id_prontuario, id_funcionario, id_procedimentos, data_solicitacao) VALUES :id_exame, :id_prontuario, :id_funcionario, :id_procedimento,:data_solicitacao");
 
+            $cadastrar->bindParam(':id_exame', $id_exame);
+            $cadastrar->bindParam(':id_prontuario', $id_prontuario);
+            $cadastrar->bindParam(':id_funcionario', $id_funcionario);
+            $cadastrar->bindParam(':id_procedimentos', $id_procedimentos);
             $cadastrar->bindParam(':data_solicitacao', $exames);
             $cadastrar->execute();
 
@@ -29,11 +33,12 @@ class modelExames{
         }
     }
 
-    public function atualizarExames($exames){
+    public function atualizarExames($id_exame, $exames){
         try{
             $pdo = Database::conexao();
-            $atualizar = $pdo->prepare("UPDATE tbl_exames SET data_solicitacao = :data_solicitacao WHERE id_exame = :id_exame");
-
+            $atualizar = $pdo->prepare("UPDATE tbl_exames SET :id_exame = :id_exame, data_solicitacao = :data_solicitacao WHERE id_exame = :id_exame");
+            
+            $atualizar->bindParam(':id_exame', $id_exame);
             $atualizar->bindParam(":data_solicitacao", $exames);
             $atualizar->execute();
 

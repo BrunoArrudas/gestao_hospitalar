@@ -15,11 +15,14 @@ class modelConsultas{
         }
     }
 
-    public function cadastrarConsultas($detalhes_consulta){
+    public function cadastrarConsultas($id_consulta, $id_prontuario ,$id_funcionario, $detalhes_consulta){
         try{
             $pdo = Database::conexao();
-            $cadastrar = $pdo->query("INSERT INTO tbl_consultas (detalhes) VALUES :detalhes");
-
+            $cadastrar = $pdo->query("INSERT INTO tbl_consultas (id_consulta, id_prontuario, id_funcionario, detalhes) VALUES :id_consulta, :id_prontuario, :id_funcionario, :detalhes");
+            
+            $cadastrar->bindParam(':id_consulta', $id_consulta);
+            $cadastrar->bindParam(':id_prontuario', $id_prontuario);
+            $cadastrar->bindParam(':id_funcionario', $id_funcionario);
             $cadastrar->bindParam(':detalhes', $detalhes_consulta);
             $cadastrar->execute();
 
@@ -29,11 +32,12 @@ class modelConsultas{
         }
     }
 
-    public function atualizarConsultas($detalhes_consulta){
+    public function atualizarConsultas($id_consulta, $id_funcionario, $id_prontuario, $detalhes_consulta){
         try{
             $pdo = Database::conexao();
-            $atualizar = $pdo->prepare("UPDATE tbl_consultas SET detalhes = :detalhes WHERE id_consulta = :id_consulta");
-
+            $atualizar = $pdo->prepare("UPDATE tbl_consultas SET id_consulta = :id_consulta, detalhes = :detalhes WHERE id_consulta = :id_consulta");
+            
+            $atualizar->bindParam(":id_consulta", $id_consulta);
             $atualizar->bindParam(":detalhes", $detalhes_consulta);
             $atualizar->execute();
 

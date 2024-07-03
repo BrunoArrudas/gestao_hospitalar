@@ -11,10 +11,10 @@ class controllerStatus{
         }
     }
 
-    public function cadastrarStatus($descricao_status){
+    public function cadastrarStatus($id_status, $descricao_status){
         try{
             $modelStatus = new modelStatus();
-            return $modelStatus->cadastrarStatus($descricao_status);
+            return $modelStatus->cadastrarStatus($id_status, $descricao_status);
         }catch(PDOException $e){
             return false;
         }

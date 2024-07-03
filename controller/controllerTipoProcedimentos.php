@@ -11,10 +11,10 @@ class controllerTipoProcedimento{
         }
     }
 
-    public function cadastrarTipoProcedimento($tipo_procedimento){
+    public function cadastrarTipoProcedimento($id_tipo_procedimento, $tipo_procedimento){
         try{
             $modelTipoProcedimento = new modelTipoProcedimentos();
-            return $modelTipoProcedimento->cadastrarTipoProcedimento($tipo_procedimento);
+            return $modelTipoProcedimento->cadastrarTipoProcedimento($id_tipo_procedimento, $tipo_procedimento);
         }catch(PDOException $e){
             return false;
         }

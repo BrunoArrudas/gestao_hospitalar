@@ -11,19 +11,19 @@ class controllerConsulta{
         }
     }
 
-    public function cadastrarConsultas($detalhes_consulta){
+    public function cadastrarConsultas($id_consulta,$id_funcionario, $id_prontuario, $detalhes_consulta){
         try{
             $modelConsultas = new modelConsultas();
-            return $modelConsultas->cadastrarConsultas($detalhes_consulta);
+            return $modelConsultas->cadastrarConsultas($id_consulta, $id_prontuario, $id_funcionario, $detalhes_consulta);
         }catch(PDOException $e){
             return false;
         }
     }
 
-    public function atualizarConsultas($detalhes_consulta){
+    public function atualizarConsultas($id_consulta, $id_funcionario, $id_prontuario, $detalhes_consulta){
         try{
             $modelConsultas = new modelConsultas();
-            return $modelConsultas->atualizarConsultas($detalhes_consulta);
+            return $modelConsultas->atualizarConsultas($id_consulta, $id_funcionario, $id_prontuario, $detalhes_consulta);
         }catch(PDOException $e){
             return false;
         }

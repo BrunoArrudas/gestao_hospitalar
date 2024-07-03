@@ -15,11 +15,12 @@ class modelTipoProcedimentos{
         }
     }
 
-    public function cadastrarTipoProcedimento($tipo_procedimento){
+    public function cadastrarTipoProcedimento($id_tipo_procedimento, $tipo_procedimento){
         try{
             $pdo = Database::conexao();
-            $cadastrar = $pdo->query("INSERT INTO tbl_tipos_procedimento (descricao_procedimento) VALUES :descricao_procedimento");
+            $cadastrar = $pdo->query("INSERT INTO tbl_tipos_procedimento (id_tipo_procedimento, descricao_procedimento) VALUES :id_tipo_procedimento, :descricao_procedimento");
 
+            $cadastrar->bindParam(':id_tipo_procedimento', $id_tipo_procedimento);
             $cadastrar->bindParam(':descricao_procedimento', $tipo_procedimento);
             $cadastrar->execute();
 
@@ -34,6 +35,7 @@ class modelTipoProcedimentos{
             $pdo = Database::conexao();
             $atualizar = $pdo->prepare("UPDATE tbl_tipos_procedimento SET descricao_procedimento = :descricao_procedimento WHERE id_tipos_procedimento = :id_tipos_procedimento");
 
+            $atualizar->bindParam(":id_tipo_procedimento", $id_tipo_procedimento);
             $atualizar->bindParam(":descricao_procedimento", $tipo_procedimento);
             $atualizar->execute();
 

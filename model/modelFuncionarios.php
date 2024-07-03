@@ -14,11 +14,14 @@ class modelFuncionarios{
         }
     }
 
-    public function cadastrarFuncionarios($nome_funcionario, $sobrenome_funcionario){
+    public function cadastrarFuncionarios($id_funcionario, $id_cargo, $id_status, $nome_funcionario, $sobrenome_funcionario){
         try{
             $pdo = Database::conexao();
-            $inserir = $pdo->prepare("INSERT INTO tbl_funcionarios(nome,sobrenome)VALUES(:nome, :sobrenome)");
+            $inserir = $pdo->prepare("INSERT INTO tbl_funcionarios(id_funcionario, id_cargo, id_status, nome,sobrenome)VALUES(:id_cargo, :id_funcionario ,:id_status,:nome, :sobrenome)");
 
+            $inserir->bindParam(':id_funcionario', $id_funcionario);
+            $inserir->bindParam(':id_cargo', $id_cargo);
+            $inserir->bindParam(':id_status', $id_status);
             $inserir->bindParam(':nome', $nome_funcionario);
             $inserir->bindParam(':sobrenome',$sobrenome_funcionario);
             $inserir->execute();
@@ -30,11 +33,12 @@ class modelFuncionarios{
         }
     }
 
-    public function atualizarFuncionarios($nome_funcionario, $sobrenome_funcionario){
+    public function atualizarFuncionarios($id_funcionario, $nome_funcionario, $sobrenome_funcionario){
         try{
             $pdo = Database::conexao();
             $atualizar = $pdo->prepare("UPDATE tbl_funcionarios SET nome_funcionario = :nome , sobrenome_funcionario = :sobrenome WHERE id_funcionario = :id_funcionario");
             
+            $atualizar->bindParam(":id_funcionario", $id_funcionario);
             $atualizar->bindParam(":nome", $nome_funcionario);
             $atualizar->bindParam(":sobrenome", $sobrenome_funcionario);
             $atualizar->execute();

@@ -29,11 +29,12 @@ class modelProntuario{
         }
     }
 
-    public function atualizarProntuario($prontuario){
+    public function atualizarProntuario($id_prontuario, $prontuario){
         try{
             $pdo = Database::conexao();
             $atualizar = $pdo->prepare("UPDATE tbl_prontuarios SET data_cadastro = :data_cadastro WHERE id_prontuario = :id_prontuario");
 
+            $atualizar->bindParam(":id_prontuario", $id_prontuario);
             $atualizar->bindParam(":data_cadastro", $prontuario);
             $atualizar->execute();
 

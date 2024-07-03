@@ -11,19 +11,19 @@ class controllerProntuario{
         }
     }
 
-    public function cadastrarProntuario($prontuario){
+    public function cadastrarProntuario($id_prontuario, $prontuario){
         try{
             $modelProntuario = new modelProntuario();
-            return $modelProntuario->cadastrarProntuario($prontuario);
+            return $modelProntuario->cadastrarProntuario($id_prontuario, $prontuario);
         }catch(PDOException $e){
             return false;
         }
     }
 
-    public function atualizarProntuario($prontuario){
+    public function atualizarProntuario($id_prontuario, $prontuario){
         try{
             $modelProntuario = new modelProntuario();
-            return $modelProntuario->atualizarProntuario($prontuario);
+            return $modelProntuario->atualizarProntuario($id_prontuario, $prontuario);
         }catch(PDOException $e){
             return false;
         }

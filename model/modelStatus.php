@@ -15,11 +15,12 @@ class modelStatus{
         }
     }
 
-    public function cadastrarStatus($descricao_status){
+    public function cadastrarStatus($id_status, $descricao_status){
         try{
             $pdo = Database::conexao();
-            $cadastrar = $pdo->query("INSERT INTO tbl_status (descricao) VALUES :descricao");
+            $cadastrar = $pdo->query("INSERT INTO tbl_status (id_status, descricao) VALUES :id_status, :descricao");
 
+            $cadastrar->bindParam(':id_status', $id_status);
             $cadastrar->bindParam(':descricao', $descricao_status);
             $cadastrar->execute();
 
@@ -34,6 +35,7 @@ class modelStatus{
             $pdo = Database::conexao();
             $atualizar = $pdo->prepare("UPDATE tbl_status SET descricao = :descricao WHERE id_status = :id_status");
 
+            $atualizar->bindParam(":id_status", $id_status);
             $atualizar->bindParam(":descricao", $descricao_status);
             $atualizar->execute();
 

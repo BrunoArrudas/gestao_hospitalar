@@ -38,12 +38,13 @@ class modelPacientes{
         }
     }
 
-    public function atualizarPaciente($nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf){
+    public function atualizarPaciente($id_paciente, $nome_paciente, $sobrenome_paciente, $email, $cep, $logradouro, $numero, $bairro, $cidade, $uf){
         try{
             $pdo = Database::conexao();
             $atualizar = $pdo->prepare("UPDATE tbl_pacientes SET nome = :nome, sobrenome = :sobrenome, email = :email, cep = :cep, logradouro = :logradouro, 
                                        numero = :numero, bairro = :bairro, cidade = :cidade, uf = :uf WHERE id_paciente = :id_paciente");
 
+            $atualizar->bindParam(":id_paciente", $id_paciente);
             $atualizar->bindParam(":nome", $nome_paciente);
             $atualizar->bindParam(":sobrenome", $sobrenome_paciente);
             $atualizar->bindParam(":email", $email);

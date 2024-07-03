@@ -11,19 +11,19 @@ class controllerExames{
         }
     }
 
-    public function cadastrarExames($exames){
+    public function cadastrarExames($id_exame,  $id_funcionario, $id_procedimentos, $id_prontuario, $exames){
         try{
             $modelExames = new modelExames();
-            return $modelExames->cadastrarExames($exames);
+            return $modelExames->cadastrarExames($id_exame, $id_funcionario, $id_prontuario, $id_procedimentos, $exames);
         }catch(PDOException $e){
             return false;
         }
     }
 
-    public function atualizarExames($exames){
+    public function atualizarExames($id_exame, $exames){
         try{
             $modelExames = new modelExames();
-            return $modelExames->atualizarExames($exames);
+            return $modelExames->atualizarExames($id_exame ,$exames);
         }catch(PDOException $e){
             return false;
         }
