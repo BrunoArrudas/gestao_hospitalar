@@ -11,10 +11,10 @@ class controllerCargo{
         }
     }
 
-    public function cadastrarCargo($cargo){
+    public function cadastrarCargo($id_cargo, $cargo){
         try{
             $modelCargo = new modelCargo();
-            return $modelCargo->cadastrarCargo($cargo);
+            return $modelCargo->cadastrarCargo($id_cargo, $cargo);
         }catch(PDOException $e){
             return false;
         }

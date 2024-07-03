@@ -6,6 +6,9 @@ include_once ("model/modelFuncionarios.php");
 
 $data = json_decode(file_get_contents('php://input'), true);
 
+$id_funcionario = $data["id_funcionario"];
+$id_cargo = $data["id_cargo"];
+$id_status = $data["id_status"];
 $nome_funcionario = $data["nome"];
 $sobrenome_funcionario = $data["sobrenome"];
 

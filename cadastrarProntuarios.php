@@ -6,6 +6,7 @@ include_once ("model/modelProntuarios.php");
 
 $data = json_decode(file_get_contents('php://input'), true);
 
+$id_prontuario = $data["id_prontuario"];
 $prontuario = $data["data_cadastro"];
 
 $controllerProntuario = new controllerProntuario();

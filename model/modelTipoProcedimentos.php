@@ -33,7 +33,7 @@ class modelTipoProcedimentos{
     public function atualizarTipoProcedimento($tipo_procedimento){
         try{
             $pdo = Database::conexao();
-            $atualizar = $pdo->prepare("UPDATE tbl_tipos_procedimento SET descricao_procedimento = :descricao_procedimento WHERE id_tipos_procedimento = :id_tipos_procedimento");
+            $atualizar = $pdo->prepare("UPDATE tbl_tipos_procedimento SET descricao_procedimento = :descricao_procedimento WHERE id_tipo_procedimento = :id_tipo_procedimento");
 
             $atualizar->bindParam(":id_tipo_procedimento", $id_tipo_procedimento);
             $atualizar->bindParam(":descricao_procedimento", $tipo_procedimento);

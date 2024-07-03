@@ -18,8 +18,9 @@ class modelProntuario{
     public function cadastrarProntuario($prontuario){
         try{
             $pdo = Database::conexao();
-            $cadastrar = $pdo->query("INSERT INTO tbl_prontuarios (data_cadastro) VALUES :data_cadastro");
+            $cadastrar = $pdo->query("INSERT INTO tbl_prontuarios (id_prontuario, data_cadastro) VALUES :id_prontuario, :data_cadastro");
 
+            $cadastrar->bindParam(':id_prontuario', $id_prontuario);
             $cadastrar->bindParam(':data_cadastro', $prontuario);
             $cadastrar->execute();
 

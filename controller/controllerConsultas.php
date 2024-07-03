@@ -20,10 +20,10 @@ class controllerConsulta{
         }
     }
 
-    public function atualizarConsultas($id_consulta, $id_funcionario, $id_prontuario, $detalhes_consulta){
+    public function atualizarConsultas($id_consulta, $detalhes_consulta){
         try{
             $modelConsultas = new modelConsultas();
-            return $modelConsultas->atualizarConsultas($id_consulta, $id_funcionario, $id_prontuario, $detalhes_consulta);
+            return $modelConsultas->atualizarConsultas($id_consulta, $detalhes_consulta);
         }catch(PDOException $e){
             return false;
         }

@@ -15,11 +15,12 @@ class modelCargo{
         }
     }
 
-    public function cadastrarCargo($cargo){
+    public function cadastrarCargo($id_cargo, $cargo){
         try{
             $pdo = Database::conexao();
-            $cadastrar = $pdo->query("INSERT INTO tbl_cargos (descricao_cargo) VALUES :descricao_cargo");
+            $cadastrar = $pdo->query("INSERT INTO tbl_cargos (id_cargo, descricao_cargo) VALUES :id_cargo, :descricao_cargo");
 
+            $cadastrar->bindParam(':id_cargo', $id_cargo);
             $cadastrar->bindParam(':descricao_cargo', $cargo);
             $cadastrar->execute();
 

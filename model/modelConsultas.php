@@ -32,7 +32,7 @@ class modelConsultas{
         }
     }
 
-    public function atualizarConsultas($id_consulta, $id_funcionario, $id_prontuario, $detalhes_consulta){
+    public function atualizarConsultas($id_consulta,$detalhes_consulta){
         try{
             $pdo = Database::conexao();
             $atualizar = $pdo->prepare("UPDATE tbl_consultas SET id_consulta = :id_consulta, detalhes = :detalhes WHERE id_consulta = :id_consulta");
